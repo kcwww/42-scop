@@ -5,7 +5,7 @@
 int main() {
     // GLFW 초기화
     if (!glfwInit()) {
-        std::cerr << "GLFW 초기화 실패" << std::endl;
+        std::cerr << "Failed to initialize GLFW" << std::endl;
         return -1;
     }
 
