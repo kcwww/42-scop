@@ -3,10 +3,16 @@ CC      = g++
 CFLAGS  = -Wall -I./include -I./glad/include
 LDFLAGS = -lglfw -ldl -lGL
 
-# 소스 파일 및 대상 지정
-SOURCES = main.cpp glad/src/glad.c
-OBJECTS = $(SOURCES:.cpp=.o)
-# .c 파일도 객체 파일로 만들어야 하므로 별도 규칙에서 처리
+# 소스 파일 분리 (C++와 C 파일을 따로 지정)
+SOURCES_CPP = main.cpp
+SOURCES_C   = glad/src/glad.c
+
+# 각각의 소스 파일에 대해 객체 파일 이름 지정
+OBJECTS_CPP = $(SOURCES_CPP:.cpp=.o)
+OBJECTS_C   = $(SOURCES_C:.c=.o)
+
+# 최종 객체 파일 목록
+OBJECTS = $(OBJECTS_CPP) $(OBJECTS_C)
 
 TARGET  = myOpenGLApp
 
@@ -25,6 +31,6 @@ $(TARGET): $(OBJECTS)
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-# 클린업
+# 클린업 (객체 파일과 빌드된 실행 파일만 삭제)
 clean:
 	rm -f $(OBJECTS) $(TARGET)

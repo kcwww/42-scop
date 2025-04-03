@@ -9,7 +9,7 @@ int main() {
         return -1;
     }
 
-    // OpenGL 버전 및 프로파일 설정 (예: OpenGL 3.3 Core)
+    
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
@@ -46,7 +46,7 @@ int main() {
             glfwSetWindowShouldClose(window, true);
 
         // 화면 초기화: 배경색 지정 (어두운 파란색 계열)
-        glClearColor(0.1f, 0.2f, 0.3f, 1.0f);
+        glClearColor(0.2f, 0.2f, 0.3f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
         // 버퍼 교체 및 이벤트 처리
